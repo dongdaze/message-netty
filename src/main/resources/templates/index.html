@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>IM实战：搭建一个简易聊天系统</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/chat.css}" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" th:src="@{/js/jquery-3.1.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/chat.js}"></script>
+    <script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    <style>
+
+    </style>
+
+
+</head>
+
+<body>
+<div>聊天界面</div>
+
+</body>
+<script>
+    function init() {
+        if (window.WebSocket) {
+            websocket = new WebSocket("ws://127.0.0.1:8080");
+            websocket.onmessage = function (event) {
+                console.log("on message")
+            };
+
+            websocket.onopen = function () {
+                console.log("on open")
+            }
+
+            websocket.onclose = function () {
+                console.log("on close")
+            };
+
+            websocket.onerror = function () {
+                console.log("on close")
+            };
+
+        } else {
+            console.log("您的浏览器不支持WebSocket协议！");
+        }
+    }
+
+    init();
+
+
+</script>
+</html>
